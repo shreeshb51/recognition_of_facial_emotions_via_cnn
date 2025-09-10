@@ -44,7 +44,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-**Important**: You can download the trained model from my [Kaggle Page](https://www.kaggle.com/models/chaching1998/rofevc/).
+**Important**: You can download the trained model from my [Kaggle Page](https://www.kaggle.com/models/chaching1998/rofevc/keras/version_1).
 
 ### Evaluating the Model
 ```python
