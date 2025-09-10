@@ -9,7 +9,7 @@ This project implements a Convolutional Neural Network (CNN) for facial emotion 
 - [Usage](#usage)
 - [Features](#features)
 - [Methodology](#methodology)
-- [Examples](#examples)
+- [Results](#results)
 - [References](#references)
 - [Dependencies](#dependencies)
 - [Algorithms/Mathematical Concepts Used](#algorithmsmathematical-concepts-used)
@@ -27,7 +27,7 @@ This project implements a Convolutional Neural Network (CNN) for facial emotion 
 pip install -r requirements.txt
 ```
 
-requirements.txt must include:
+2. The requirements.txt must include:
 ```
 - TensorFlow >= 2.8.0
 - Keras >= 2.8.0
@@ -40,7 +40,7 @@ requirements.txt must include:
 - Pillow>=8.0.0
 ```
 
-2. Download the dataset used (uploaded to this repository as well) from [Kaggle](https://www.kaggle.com/datasets/aadityasinghal/facial-expression-dataset).
+3. Download the dataset used in this project from [Kaggle](https://www.kaggle.com/datasets/aadityasinghal/facial-expression-dataset).
 
 ## Usage
 
@@ -107,19 +107,41 @@ Dense(7) → Softmax
 - Weighted F1-score: 67.51%
 - Average inference time: 0.0068s per sample
 
-*[Space for training/validation curves figure]*
+| *Sample Images in Dataset* |
+|:--:| 
+| ![image](images/1_sample_images_in_dataset.png) |
 
-*[Space for confusion matrix figure]*
+| *Distribution of Training Images* |
+|:--:| 
+| ![image](images/2_training_distribution.png) |
 
-## Examples
+| *Distribution of Testing Images* |
+|:--:| 
+| ![image](images/3_testing_distribution.png) |
 
-### Sample Predictions
-*[Space for sample prediction visualizations]*
+## Results
+
+### Training and Testing Loss and Accuracy Analysis
+
+| *Loss and Validation Curve for Training and Testing Data* |
+|:--:| 
+| ![image](images/loss_and_accuracy_curves.png) |
 
 ### Error Analysis
+
 The model shows 2,298 misclassified samples out of 7,178 test samples, with particular challenges in distinguishing between similar emotions like fear/surprise and sad/neutral.
 
-*[Space for misclassified samples gallery]*
+| *Confusion Matrix* |
+|:--:| 
+| ![image](images/5_confusion_matrix.png) |
+
+| *Misclassified Sample Images* |
+|:--:| 
+| ![image](images/6_misclassified_sample_images.png) |
+
+| *True versus Predicted Result of Sample Images* |
+|:--:| 
+| ![image](images/7_true_vs_predicted.png) |
 
 ### Robustness Testing
 - Clean data accuracy: 67.99%
@@ -127,7 +149,9 @@ The model shows 2,298 misclassified samples out of 7,178 test samples, with part
 - Noise level 0.1: 17.6%
 - Noise level 0.2: 17.4%
 
-*[Space for robustness testing visualization]*
+| *Robustness Testing* |
+|:--:| 
+| ![image](images/8_robustness_testing.png) |
 
 ## Dependencies
 
@@ -142,32 +166,38 @@ The model shows 2,298 misclassified samples out of 7,178 test samples, with part
 
 ## Algorithms/Mathematical Concepts Used
 
-### 1. Convolutional Neural Networks
-- **Convolution Operation**: Feature extraction using learnable filters
-- **Mathematical formulation**: (f * g)(t) = ∫f(τ)g(t-τ)dτ
-- **Activation Functions**: ReLU for non-linearity
+## 1. Convolutional Neural Networks (CNNs)
+- **Convolution Operation**: Extracts features using learnable filters.
+- **Mathematical Formulation**:  
+  $$(f * g)(t) = \int f(\tau)g(t-\tau)d\tau$$
+- **Activation Functions**: ReLU introduces non-linearity.
 
-### 2. Batch Normalization
-- **Normalization**: x̂ = (x - μ) / √(σ² + ε)
-- **Scale and shift**: y = γx̂ + β
-- Reduces internal covariate shift
+## 2. Batch Normalization
+- **Normalization**:  
+  $$\hat{x} = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}}$$
+- **Scale and Shift**:  
+  $$y = \gamma \hat{x} + \beta$$
+- Reduces internal covariate shift.
 
-### 3. Dropout Regularization
-- **Probability-based neuron deactivation**: p(keeping neuron) = 1 - dropout_rate
-- Prevents overfitting by reducing co-adaptation
+## 3. Dropout Regularization  
+**Mechanism:** Deactivates neurons with probability $p_{\text{keep}}$ = 1 - dropout_rate. Prevents overfitting by reducing neuron co-adaptation.
 
-### 4. Adam Optimization
-- **Momentum**: m_t = β₁m_{t-1} + (1-β₁)g_t
-- **RMSprop**: v_t = β₂v_{t-1} + (1-β₂)g_t²
-- **Parameter update**: θ = θ - α(m̂_t / (√v̂_t + ε))
+## 4. Adam Optimization
+- **Momentum**:  
+  $$m_t = \beta_1 m_{t-1} + (1 - \beta_1)g_t$$
+- **RMSprop**:  
+  $$v_t = \beta_2 v_{t-1} + (1 - \beta_2)g_t^2$$
+- **Parameter Update**:  
+  $$\theta = \theta - \alpha \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}$$
 
-### 5. Categorical Cross-Entropy Loss
-- **Multi-class loss**: L = -Σᵢ yᵢ log(ŷᵢ)
-- Suitable for mutually exclusive class predictions
+## 5. Categorical Cross-Entropy Loss
+- **Loss Function**:  
+  $$L = -\sum_i y_i \log(\hat{y}_i)$$
+- Suitable for mutually exclusive class predictions.
 
-### 6. Data Augmentation Transforms
-- **Rotation matrices**: Geometric transformations preserving image content
-- **Affine transformations**: Linear mapping + translation
+## 6. Data Augmentation Transforms
+- **Rotation Matrices**: Geometric transformations preserving image content.
+- **Affine Transformations**: Linear mapping + translation.
 
 ## References
 
@@ -196,5 +226,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Academic advisors and peers for guidance and feedback
 
 ## Note
+
 | AI was used to generate most of the docstrings and inline comments in the code. |
 |:--:|
