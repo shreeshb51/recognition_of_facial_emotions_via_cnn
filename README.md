@@ -125,7 +125,7 @@ Dense(7) → Softmax
 
 | *Loss and Validation Curve for Training and Testing Data* |
 |:--:| 
-| ![image](images/loss_and_accuracy_curves.png) |
+| ![image](images/4_loss_and_accuracy_curves.png) |
 
 ### Error Analysis
 
