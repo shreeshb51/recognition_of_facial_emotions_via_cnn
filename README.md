@@ -44,6 +44,8 @@ pip install -r requirements.txt
 
 ## Usage
 
+**Important**: You can download the trained model from my [Kaggle Page](https://www.kaggle.com/models/shreeshbhattarai/rofevcnn/).
+
 ### Evaluating the Model
 ```python
 python evaluate_model.py --model_path model.keras
